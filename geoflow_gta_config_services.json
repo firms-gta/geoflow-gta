@@ -1,6 +1,6 @@
 {
   "profile": {
-  	"id": "firms-gta-services",
+  	"id": "gta-services",
   	"mode": "entity",
   	"environment": {
   		"file": "envs/gta_sandbox.env",
@@ -115,7 +115,9 @@
 		"id": "geometa-create-iso-19110",
 		"run": true,
 		"options": {
-		  "exclude_values_for_attributes": ["geographic_identifier", "time_start", "time_end", "measurement"]
+		  "exclude_attributes": ["time_start", "time_end"],
+		  "exclude_values_for_attributes": ["geographic_identifier", "measurement"],
+		  "extra_attributes": ["geom", "aggregation_method"]
 		}
 	},
 	{
