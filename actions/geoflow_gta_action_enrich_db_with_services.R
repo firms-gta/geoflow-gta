@@ -14,7 +14,7 @@ enrich_db_for_services <- function(action,entity, config){
   dimensions <- c(dimensions[!dimensions %in% c("geographic_identifier", "measurement_value")],"aggregation_method")
   
   #scripts
-  source(geoflow::get_config_resource_path(config, "./geoflow_gta_action_plsql.R"))
+  source(geoflow::get_config_resource_path(config, "./actions/geoflow_gta_action_plsql.R"))
   create_plsql_data_getter(action,entity, config) #create pl/sql function in DB to get fact dataset (generic function, one function per fact)
   
   #entity management
@@ -56,10 +56,12 @@ enrich_db_for_services <- function(action,entity, config){
     entity$data$setParameter(dimension, dimension, regexpValue, defaultValue)
   }
   
+  mainSource <- sprintf("select * from get_fact_dataset_%s('%s', '%s', %s, '%s')", fact, schema, pid, paste0("'", default_values,"'", collapse=","),geom_table)
+  entity$data$features = sf::st_read(con, query = mainSource)
+  
   #config$logger.info("Upload SQL main query (based on PL/SQL function to query data) to Google Drive")
   # folder_views_id <- drive_get("~/geoflow_tunaatlas/data/outputs/views")$id #googledrive 1.0.0 doesn't work for that.. needs the github fix
   #folder_views_id <- "1Rm8TJsUM0DQo1c91LXS5kCzaTLt8__bS"
-  #mainSource <- sprintf("select * from get_fact_dataset_%s('%s', '%s', %s, '%s')", fact, schema, pid, paste0("'", default_values,"'", collapse=","),geom_table)
   #file_sql_query <- paste0(entity$identifiers[["id"]], "_query.sql")
   #writeLines(mainSource, file.path("data", file_sql_query))
   #entity$data$source <- c(file_sql_query, entity$data$source)
