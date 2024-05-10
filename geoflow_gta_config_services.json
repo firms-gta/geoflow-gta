@@ -111,21 +111,21 @@
 		  "logo": true
 		}
 	},
-	  {
+	{
 		"id": "geometa-create-iso-19110",
 		"run": true,
 		"options": {
-		  "exclude_values_for_attributes": ["geographic_identifier", "time_start", "time_end"]
+		  "exclude_values_for_attributes": ["geographic_identifier", "time_start", "time_end", "measurement"]
 		}
-	  },
-	  {
+	},
+	{
 		"id": "geonapi-publish-iso-19139",
 		"run":true,
 		"options": {
 		"publish_thumbnails": true
 		}
-	  },
-	  {
+	},
+	{
 		"id": "geosapi-publish-ogc-services",
 		"run":true,
 		"options": {
@@ -135,6 +135,6 @@
 		  "describe_wms_relation_with_category": false,
 		  "describe_wms_relation_with_ogc_service_description" : false
 		}
-	  }
+	}
   ]
 }

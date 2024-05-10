@@ -39,7 +39,7 @@ register_gear_type <- function(config){
 #register_catch_measurement_type
 register_catch_measurement_type <- function(config){
 	fetched <- readr::read_csv("https://raw.githubusercontent.com/fdiwg/fdi-codelists/main/global/cwp/cl_catch_concepts.csv") %>% as.data.frame()
-	out = fetched[fetched$code = "RC",]
+	out <- fetched[,c("code", "uri", "label", "definition")]
 	return(out)		
 }
 
