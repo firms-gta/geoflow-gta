@@ -55,15 +55,5 @@ enrich_db_for_services <- function(action,entity, config){
     default_values <- c(default_values, defaultValue)
     entity$data$setParameter(dimension, dimension, regexpValue, defaultValue)
   }
-  
-  mainSource <- sprintf("select * from get_fact_dataset_%s('%s', '%s', %s, '%s')", fact, schema, pid, paste0("'", default_values,"'", collapse=","),geom_table)
-  entity$data$features = sf::st_read(con, query = mainSource)
-  
-  #config$logger.info("Upload SQL main query (based on PL/SQL function to query data) to Google Drive")
-  # folder_views_id <- drive_get("~/geoflow_tunaatlas/data/outputs/views")$id #googledrive 1.0.0 doesn't work for that.. needs the github fix
-  #folder_views_id <- "1Rm8TJsUM0DQo1c91LXS5kCzaTLt8__bS"
-  #file_sql_query <- paste0(entity$identifiers[["id"]], "_query.sql")
-  #writeLines(mainSource, file.path("data", file_sql_query))
-  #entity$data$source <- c(file_sql_query, entity$data$source)
-  #drive_upload(file.path("data", file_sql_query), as_id(folder_views_id), overwrite = TRUE)
+
 }
