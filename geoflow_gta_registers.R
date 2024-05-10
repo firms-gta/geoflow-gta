@@ -17,7 +17,7 @@ register_fishing_fleet <- function(config){
 
 #register_species
 register_species <- function(config){	
-	fetched = readr::read_csv("https://github.com/fdiwg/fdi-codelists/blob/main/global/firms/gta/cl_species_level0.csv") %>% as.data.frame()
+	fetched = readr::read_csv("https://raw.githubusercontent.com/fdiwg/fdi-codelists/main/global/firms/gta/cl_species_level0.csv") %>% as.data.frame()
 	out <- fetched[,c("code", "uri", "label", "definition")]
 	return(out)	
 }
