@@ -1,0 +1,53 @@
+{
+  "profile": {
+  	"id": "firms-gta-dbmodel-codelists",
+  	"mode": "entity",
+  	"environment": {
+  		"file": "envs/gta_sandbox.env",
+  		"hide_env_vars": ["USER", "PASSWORD", "TOKEN"]
+  	},
+  	"project": "FIRMS Tuna Atlas",
+  	"organization": "FIRMS Tuna Atlas",
+  	"logos": [
+  		"http://firms.fao.org/figis/website/assets/images/templates/firms/firms_banner.gif",
+  		"http://www.fao.org/fileadmin/templates/family-farming-decade/images/FAO-IFAD-Logos/FAO-Logo-EN.svg",
+  		"http://www.umr-marbec.fr/images/logo-ird-en.png"
+  	],
+  	"options": {
+  		"line_separator": "_\n"
+  	}
+  },
+  "metadata": {
+    "entities": [
+		{
+		  "handler": "gsheet",
+		  "source": "https://docs.google.com/spreadsheets/d/19Wxs-RyeE7B2YX1jN6fbmJadFe_BKUhLfuMeluEU5rI/edit?usp=sharing"
+		}
+	],
+    "contacts" : [
+		{
+		  "handler": "gsheet",
+		  "source": "https://docs.google.com/spreadsheets/d/1ySAm8jZeZ0k2Se8FXcT2oGAI4fT2t3C1eKMvdG0MjCI/edit?usp=sharing"
+		}
+	]
+  },
+  "software": [
+	{
+		"id": "gta-db-write",
+		"type": "output",
+		"software_type": "dbi",
+		"parameters": {
+			"drv": "{{GTA_DB_DRV}}",
+			"user": "{{GTA_DB_USER}}",
+			"password": "{{GTA_DB_PASSWORD}}",
+			"host": "{{GTA_DB_HOST}}",
+			"port": "{{GTA_DB_PORT}}",
+			"dbname": "{{GTA_DB_NAME}}"
+		},
+		"properties" : {
+			"user_readonly": "{{GTA_DB_USER_READONLY}}"
+		}
+	}
+  ],
+  "actions": []
+}

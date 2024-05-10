@@ -1,0 +1,140 @@
+{
+  "profile": {
+  	"id": "firms-gta-services",
+  	"mode": "entity",
+  	"environment": {
+  		"file": "envs/gta_sandbox.env",
+  		"hide_env_vars": ["USER", "PASSWORD", "TOKEN"]
+  	},
+  	"project": "FIRMS Tuna Atlas",
+  	"organization": "FIRMS Tuna Atlas",
+  	"logos": [
+  		"http://firms.fao.org/figis/website/assets/images/templates/firms/firms_banner.gif",
+  		"http://www.fao.org/fileadmin/templates/family-farming-decade/images/FAO-IFAD-Logos/FAO-Logo-EN.svg",
+  		"http://www.umr-marbec.fr/images/logo-ird-en.png"
+  	],
+  	"options": {
+  		"line_separator": "_\n"
+  	}
+  },
+  "metadata": {
+    "entities": [
+		{
+		  "handler": "gsheet",
+		  "source": "https://docs.google.com/spreadsheets/d/1LZ4RRi5jWEnKZZDkI_Nt4pYCYj_pS8Ge0727azy1cfI/edit?usp=sharing"
+		}
+	],
+    "contacts" : [
+		{
+		  "handler": "gsheet",
+		  "source": "https://docs.google.com/spreadsheets/d/1ySAm8jZeZ0k2Se8FXcT2oGAI4fT2t3C1eKMvdG0MjCI/edit?usp=sharing"
+		}
+	],
+	"dictionary": [
+		{
+		  "handler": "gsheet",
+		  "source": "https://docs.google.com/spreadsheets/d/17OQWKpK_NhPFdo2VIeWfcXwSl9f1fRPbj91rnpCs_as/edit?usp=sharing"
+		}
+	]
+  },
+  "software": [
+	{
+		"id": "dcf-gta-db-read",
+		"type": "input",
+		"software_type": "dbi",
+		"parameters": {
+			"drv": "{{DCF_GTA_DB_DRV}}",
+			"user": "{{DCF_GTA_DB_USER}}",
+			"password":"{{DCF_GTA_DB_PASSWORD}}",
+			"host": "{{DCF_GTA_DB_HOST}}",
+			"port": "{{DCF_GTA_DB_PORT}}",
+			"dbname": "{{DCF_GTA_DB_NAME}}"
+		},
+		"properties" : {
+			"user_readonly": "{{DCF_GTA_DB_USER_READONLY}}"
+		}
+	},
+	{
+		"id": "gta-db-write",
+		"type": "output",
+		"software_type": "dbi",
+		"parameters": {
+			"drv": "{{GTA_DB_DRV}}",
+			"user": "{{GTA_DB_USER}}",
+			"password": "{{GTA_DB_PASSWORD}}",
+			"host": "{{GTA_DB_HOST}}",
+			"port": "{{GTA_DB_PORT}}",
+			"dbname": "{{GTA_DB_NAME}}"
+		},
+		"properties" : {
+			"user_readonly": "{{GTA_DB_USER_READONLY}}"
+		}
+	},
+	{
+  		"id": "fao-nfi-geonetwork",
+  		"type": "output",
+  		"software_type": "geonetwork",
+  		"parameters": {
+  			"url": "{{GEONETWORK_URL}}",
+  			"user": "{{GEONETWORK_USER}}",
+  			"pwd": "{{GEONETWORK_PASSWORD}}",
+  			"version": "3.8.2",
+  			"logger": "DEBUG"
+  		}
+  	},
+  	{
+  		"id": "fao-nfi-geoserver",
+  		"type": "output",
+  		"software_type": "geoserver",
+  		"parameters": {
+  			"url": "{{GEOSERVER_URL}}",
+  			"user": "{{GEOSERVER_USER}}",
+  			"pwd": "{{GEOSERVER_PASSWORD}}",
+  			"logger": "DEBUG"
+  		},
+  		"properties" : {
+  			"workspace": "{{GEOSERVER_WORKSPACE}}",
+			"store": "{{GEOSERVER_STORE}}"
+  		}
+  	}
+  ],
+  "actions": [
+    {
+		"id": "enrich_for_db_services",
+		"script": "https://raw.githubusercontent.com/firms-gta/geoflow-gta/master/actions/enrich_db_for_services.R",
+		"run": true
+	},
+	{
+		"id": "geometa-create-iso-19115",
+		"run": true,
+		"options": {
+		  "logo": true
+		}
+	},
+	  {
+		"id": "geometa-create-iso-19110",
+		"run": true,
+		"options": {
+		  "exclude_values_for_attributes": ["geographic_identifier", "time_start", "time_end"]
+		}
+	  },
+	  {
+		"id": "geonapi-publish-iso-19139",
+		"run":true,
+		"options": {
+		"publish_thumbnails": true
+		}
+	  },
+	  {
+		"id": "geosapi-publish-ogc-services",
+		"run":true,
+		"options": {
+		  "createWorkspace": true,
+		  "createStore": true,
+		  "overwrite": true,
+		  "describe_wms_relation_with_category": false,
+		  "describe_wms_relation_with_ogc_service_description" : false
+		}
+	  }
+  ]
+}
