@@ -1,9 +1,9 @@
 {
   "profile": {
-  	"id": "firms-gta-dbmodel-codelists",
+  	"id": "firms-gta-model",
   	"mode": "entity",
   	"environment": {
-  		"file": "envs/gta_sandbox.env",
+  		"file": "envs/gta.env",
   		"hide_env_vars": ["USER", "PASSWORD", "TOKEN"]
   	},
   	"project": "FIRMS Tuna Atlas",
