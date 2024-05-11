@@ -15,7 +15,7 @@ create_plsql_data_getter <- function(action,entity, config){
 
 	fact <- entity$resources$fact
 	sql_params <- paste0("schema_name varchar, pid varchar,", paste0(paste0("input_", dimensions, " varchar"), collapse = ","), ",geom_table varchar")
-	sql_drop <- sprintf("DROP FUNCTION public.get_fact_dataset_%s(%s)", fact, paste0(rep("varchar", length(dimensions)+3),collapse=","))
+	sql_drop <- sprintf("DROP FUNCTION public.get_fact_dataset_%s(%s)", fact, paste0(rep("character varying", length(dimensions)+3),collapse=","))
 	sql_create <- sprintf("CREATE OR REPLACE FUNCTION public.get_fact_dataset_%s(%s) \n", fact, sql_params)
 	
 	sql_table_columns <- c(dimensions[dimensions != "aggregation_method"], "measurement_value", "geographic_identifier", "geom")
