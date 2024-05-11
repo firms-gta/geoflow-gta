@@ -249,7 +249,7 @@ function(action, entity, config) {
   #write to service dbi
   dataset_enriched$geographic_identifier = as.character(dataset_enriched$geographic_identifier)
   entity$data$features = dataset_enriched
-  writeWorkflowJobDataResource(entity=entity,config=config,type="dbtable",useFeatures=TRUE,useUploadSource=TRUE, createIndexes=TRUE)
+  if(entity$data$upload) writeWorkflowJobDataResource(entity=entity,config=config,type="dbtable",useFeatures=TRUE,useUploadSource=TRUE, createIndexes=TRUE)
   
   entity$addResource("fact", action$options$fact)
   entity$addResource("geom_table", action$options$geom_table)
