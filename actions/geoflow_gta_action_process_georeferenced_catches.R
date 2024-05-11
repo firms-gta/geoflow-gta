@@ -179,6 +179,13 @@ function(action, entity, config) {
 
   }
   
+  if (!is.null(opts$gear_filter)){
+    gear_filter<-unlist(strsplit(opts$gear_filter, split=","))
+    config$logger.info(sprintf("Filtering by gear(s) [%s]", paste(gear_filter, collapse=",")))	
+    georef_dataset<-georef_dataset %>% dplyr::filter(gear_type %in% gear_filter)
+    config$logger.info("Filtering gears OK")
+  }
+  
   #-----------------------------------------------------------------------------------------------------------------------------------------------------------
   config$logger.info("Apply filters if filter needed (Filter data by groups of everything) ")
   #-----------------------------------------------------------------------------------------------------------------------------------------------------------
