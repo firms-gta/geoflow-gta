@@ -108,6 +108,7 @@
 		"id": "geometa-create-iso-19115",
 		"run": true,
 		"options": {
+		  "doi": true,
 		  "logo": true
 		}
 	},
