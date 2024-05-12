@@ -11,7 +11,7 @@
   	"logos": [
   		"http://firms.fao.org/figis/website/assets/images/templates/firms/firms_banner.gif",
   		"http://www.fao.org/fileadmin/templates/family-farming-decade/images/FAO-IFAD-Logos/FAO-Logo-EN.svg",
-  		"http://www.umr-marbec.fr/images/logo-ird-en.png"
+  		"https://en.ird.fr/sites/ird_fr/files/2019-08/logo_IRD_2016_BLOC_UK_COUL.png"
   	],
   	"options": {
   		"line_separator": "_\n"
