@@ -14,7 +14,7 @@ enrich_db_for_services <- function(action,entity, config){
   dimensions <- c(dimensions[!dimensions %in% c("geographic_identifier", "measurement_value")],"aggregation_method")
   
   #scripts
-  source(geoflow::get_config_resource_path(config, "./actions/geoflow_gta_action_plsql.R"))
+  source("https://raw.githubusercontent.com/firms-gta/geoflow-gta/main/actions/geoflow_gta_action_plsql.R")
   create_plsql_data_getter(action,entity, config) #create pl/sql function in DB to get fact dataset (generic function, one function per fact)
   
   #entity management
