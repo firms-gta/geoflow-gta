@@ -215,7 +215,7 @@ function(action, entity, config) {
   dataset$time_start <- as.Date(dataset$time_start)
   dataset$time_end <- as.Date(dataset$time_end)
   #we enrich the entity with temporal coverage
-  dataset_temporal_extent <- paste(as.character(lubridate::year(min(dataset$time_start))), as.character(lubridate::year(max(dataset$time_end))), sep = "/")
+  dataset_temporal_extent <- paste(as.character(min(dataset$time_start)), as.character(max(dataset$time_end)), sep = "/")
   entity$setTemporalExtent(dataset_temporal_extent)
   
   #@geoflow -> export as csv
