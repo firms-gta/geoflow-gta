@@ -77,8 +77,8 @@ function(action, entity, config) {
   readr::write_csv(dataset_enriched, output_name_dataset_public)
   
   #write parquet files
-  writeWorkflowJobDataResource(entity=entity,config=config,obj=dataset,resourcename = paste0(entity$identifiers[["id"]], "_harmonized"),type="parquet",useFeatures=FALSE)
-  writeWorkflowJobDataResource(entity=entity,config=config,obj=dataset_enriched,resourcename = paste0(entity$identifiers[["id"]], "_public"),type="parquet",useFeatures=FALSE)
+  nanoparquet::write_parquet(dataset, file.path("data", paste0(entity$identifiers[["id"]], "_harmonized.parquet"))
+  nanoparquet::write_parquet(dataset_enriched, file.path("data", paste0(entity$identifiers[["id"]], "_public.parquet"))
   
   # ---------------------------------------------------------------------------------------------------------------------------
   entity$addResource("harmonized", output_name_dataset)
