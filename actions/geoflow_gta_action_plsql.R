@@ -141,7 +141,7 @@ create_plsql_data_getter <- function(action,entity, config){
 	config$logger.info("Create or Replace PL/PSQL function to get dataset")
 	config$logger.info(paste("\n", sql_create))
 	
-	dbSendQuery(con, sql_drop)
+	try(dbSendQuery(con, sql_drop), silent = TRUE)
 	
 	dbSendQuery(con, sql_create)
 }
