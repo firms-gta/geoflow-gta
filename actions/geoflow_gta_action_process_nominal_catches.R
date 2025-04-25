@@ -76,6 +76,10 @@ function(action, entity, config) {
   dataset_enriched = dataset_enriched[,columns_to_keep]
   readr::write_csv(dataset_enriched, output_name_dataset_public)
   
+  #write parquet files
+  writeWorkflowJobDataResource(entity=entity,config=config,obj=dataset,resourcename = paste0(entity$identifiers[["id"]], "_harmonized"),type="parquet",useFeatures=FALSE)
+  writeWorkflowJobDataResource(entity=entity,config=config,obj=dataset_enriched,resourcename = paste0(entity$identifiers[["id"]], "_public"),type="parquet",useFeatures=FALSE)
+  
   # ---------------------------------------------------------------------------------------------------------------------------
   entity$addResource("harmonized", output_name_dataset)
   entity$addResource("public", output_name_dataset_public)
