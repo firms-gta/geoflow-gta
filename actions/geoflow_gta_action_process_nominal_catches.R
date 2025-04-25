@@ -7,10 +7,6 @@ function(action, entity, config) {
 	#action options
 	SBF_data_rfmo_to_keep = if(!is.null(opts$SBF_data_rfmo_to_keep)) opts$SBF_data_rfmo_to_keep else "CCSBT"
 	
-	#scripts
-	url_scripts_create_own_tuna_atlas <- "https://raw.githubusercontent.com/firms-gta/geoflow-tunaatlas/master/tunaatlas_scripts/generation"
-	source(file.path(url_scripts_create_own_tuna_atlas, "retrieve_nominal_catch.R"))
-	
 	#data
 	nominal_catch = entity$data$features
 	
@@ -34,8 +30,8 @@ function(action, entity, config) {
     }
 	
 	##for now we keep only landings excluding discards for now
-	nominal_catch <- nominal_catch %>%
-		dplyr::filter(measurement_type != "D")
+	#nominal_catch <- nominal_catch %>%
+	#	dplyr::filter(measurement_type != "D")
 	
    #### 2) Southern Bluefin Tuna (SBF): SBF data: keep data from CCSBT or data from the other tuna RFMOs?
   
@@ -52,7 +48,7 @@ function(action, entity, config) {
   }
   
   #final step
-  dataset<-nominal_catch %>% dplyr::group_by(.dots = setdiff(colnames(nominal_catch),"masurement_value")) %>% dplyr::summarise(measurement_value=sum(measurement_value))
+  dataset<-nominal_catch %>% dplyr::group_by(.dots = setdiff(colnames(nominal_catch),"measurement_value")) %>% dplyr::summarise(measurement_value=sum(measurement_value))
   dataset<-data.frame(dataset)
   if(!is.na(any(dataset$measurement_unit) == "TRUE")) if(any(dataset$measurement_unit) == "TRUE") dataset[(dataset$measurement_unit) == "TRUE",]$measurement_unit <- "t"  #patch because of https://github.com/firms-gta/geoflow-tunaatlas/issues/41
   
@@ -75,7 +71,7 @@ function(action, entity, config) {
   dataset_enriched$year = as.integer(format(dataset_enriched$time_end, "%Y"))
   dataset_enriched$month = as.integer(format(dataset_enriched$time_end, "%m"))
   dataset_enriched$quarter = as.integer(substr(quarters(dataset_enriched$time_end), 2, 2))
-  columns_to_keep <- c("source_authority", "species", "gear_type", "fishing_fleet", "fishing_mode", "time_start", "time_end", "year", "month", "quarter", "geographic_identifier", "measurement", "measurement_type", "measurement_unit", "measurement_value")
+  columns_to_keep <- c("source_authority", "species", "gear_type", "fishing_fleet", "fishing_mode", "time_start", "time_end", "year", "month", "quarter", "geographic_identifier", "measurement", "measurement_type", "measurement_value", "measurement_processing_level")
   columns_to_keep <- intersect(colnames(dataset_enriched), columns_to_keep)
   dataset_enriched = dataset_enriched[,columns_to_keep]
   readr::write_csv(dataset_enriched, output_name_dataset_public)
