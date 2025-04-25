@@ -77,8 +77,8 @@ function(action, entity, config) {
   readr::write_csv(dataset_enriched, output_name_dataset_public)
   
   #write parquet files
-  nanoparquet::write_parquet(dataset, file.path("data", paste0(entity$identifiers[["id"]], "_harmonized.parquet"))
-  nanoparquet::write_parquet(dataset_enriched, file.path("data", paste0(entity$identifiers[["id"]], "_public.parquet"))
+  nanoparquet::write_parquet(dataset, file.path("data", paste0(entity$identifiers[["id"]], "_harmonized.parquet")))
+  nanoparquet::write_parquet(dataset_enriched, file.path("data", paste0(entity$identifiers[["id"]], "_public.parquet")))
   
   # ---------------------------------------------------------------------------------------------------------------------------
   entity$addResource("harmonized", output_name_dataset)
