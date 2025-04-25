@@ -71,7 +71,7 @@ function(action, entity, config) {
   dataset_enriched$year = as.integer(format(dataset_enriched$time_end, "%Y"))
   dataset_enriched$month = as.integer(format(dataset_enriched$time_end, "%m"))
   dataset_enriched$quarter = as.integer(substr(quarters(dataset_enriched$time_end), 2, 2))
-  columns_to_keep <- c("source_authority", "species", "gear_type", "fishing_fleet", "fishing_mode", "time_start", "time_end", "year", "month", "quarter", "geographic_identifier", "measurement", "measurement_type", "measurement_value", "measurement_processing_level")
+  columns_to_keep <- c("source_authority", "species", "gear_type", "fishing_fleet", "fishing_mode", "time_start", "time_end", "year", "month", "quarter", "geographic_identifier", "measurement", "measurement_type", "measurement_value", "measurement_unit", "measurement_processing_level")
   columns_to_keep <- intersect(colnames(dataset_enriched), columns_to_keep)
   dataset_enriched = dataset_enriched[,columns_to_keep]
   readr::write_csv(dataset_enriched, output_name_dataset_public)
