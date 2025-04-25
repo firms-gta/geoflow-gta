@@ -54,6 +54,13 @@ register_catch_measurement_unit <- function(config){
 	return(out)		
 }
 
+#register_catch_measurement_processing_level
+register_catch_measurement_processing_level <- function(config){
+	fetched <- readr::read_csv("https://raw.githubusercontent.com/fdiwg/fdi-codelists/main/global/fdi/cl_measurement_processing_level.csv") %>% as.data.frame()
+	out <- fetched[,c("code", "uri", "label", "definition")]
+	return(out)	
+}
+
 #register_month
 register_month <- function(config){
 	out <- data.frame(
