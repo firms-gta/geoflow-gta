@@ -29,10 +29,6 @@ function(action, entity, config) {
         dplyr::filter(time_start <= min_time_start)
     }
 	
-	##for now we keep only landings excluding discards for now
-	#nominal_catch <- nominal_catch %>%
-	#	dplyr::filter(measurement_type != "D")
-	
    #### 2) Southern Bluefin Tuna (SBF): SBF data: keep data from CCSBT or data from the other tuna RFMOs?
   
 	if (!is.null(SBF_data_rfmo_to_keep)){
