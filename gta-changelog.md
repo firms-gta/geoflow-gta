@@ -1,5 +1,28 @@
 # FIRMS Global Tuna Atlas - Change log
 
+## 2025.1.0 (2025-04-26)
+
+- Data format specifications have been consolidated to improve quality of data submitted by tRFMOs for both [nominal catches](https://github.com/fdiwg/fdi-formats/blob/main/cwp_rh_generic_gta_taskI.json) and [georeferenced catches](https://github.com/fdiwg/fdi-formats/blob/main/cwp_rh_generic_gta_taskII.json). It includes the submission of the `measurement_processing_level` to indicate whether data correspond to the original sample or to raised data.
+- Global datasets now include discards (when available), and data services now allow users to filter on the `measurement_type` based on the [catch concepts](https://github.com/fdiwg/fdi-codelists/blob/main/global/cwp/cl_catch_concepts.csv) standardized by the CWP.
+- Datasets downloadable through DOIs are now available as Parquet format (in addition to zipped CSV data files).
+- Dataset metadata have been consolidated to include vocabulary references such as [GEMET](https://www.eionet.europa.eu/gemet) and [AGROVOC](https://aims.fao.org/aos/agrovoc/)
+
+### global_nominal_catch_firms_level0 (DOI: [10.5281/zenodo.5745958](https://doi.org/10.5281/zenodo.5745958))
+
+- temporal coverage includes two additional years of data (2022,2023)
+
+### global_catch_1deg_1m_surface_firms_level0 (DOI: [10.5281/zenodo.5745986](https://doi.org/10.5281/zenodo.5745986))
+
+- temporal coverage includes two additional years of data (2022,2023)
+
+### global_catch_5deg_1m_firms_level0 (DOI: [10.5281/zenodo.5746041](https://doi.org/10.5281/zenodo.5746041))
+
+- temporal coverage includes two additional years of data (2022,2023)
+
+### global_catch_firms_level0 (DOI: [10.5281/zenodo.5747174](https://doi.org/10.5281/zenodo.5747174))
+
+- temporal coverage includes two additional years of data (2022,2023)
+
 ## 2024.1.0 (2024-06-01)
 
 - tRFMO datasets are now validated and submitted through an [online tool](https://i-marine.d4science.org/group/fao_tunaatlas/dcrf-data-call-management) based on data calls. Data validation (for structure and content) is made against the CWP Reference harmonization standard.
