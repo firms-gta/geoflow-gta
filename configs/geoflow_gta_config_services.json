@@ -151,7 +151,10 @@
 	},
 	{
 	  "id": "zen4R-deposit-record",
-	  "run": true
+	  "run": true,
+	  "options": {
+		"zipEachDataFile": true
+	  }
 	}
   ]
 }
