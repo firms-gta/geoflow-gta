@@ -1,5 +1,9 @@
 # FIRMS Global Tuna Atlas - Change log
 
+## 2025.1.1 (2025-04-30)
+
+- Column `time_end` was fixed for CCSBT, IATTC and WCPFC contributions to the global nominal catches dataset (`global_nominal_catch_firms_level0`). Version `2025.1.1` (_corrigendum_) targets only this dataset and its version `2025.1.0`
+
 ## 2025.1.0 (2025-04-26)
 
 - Data format specifications have been consolidated to improve quality of data submitted by tRFMOs for both [nominal catches](https://github.com/fdiwg/fdi-formats/blob/main/cwp_rh_generic_gta_taskI.json) and [georeferenced catches](https://github.com/fdiwg/fdi-formats/blob/main/cwp_rh_generic_gta_taskII.json). It includes the submission of the `measurement_processing_level` to indicate whether data correspond to the original sample or to raised data.
