@@ -1,5 +1,11 @@
 # FIRMS Global Tuna Atlas - Change log
 
+## 2025.2.0 (2025-10-31)
+
+### global_nominal_catch_firms_level0 (DOI: [10.5281/zenodo.5745958](https://doi.org/10.5281/zenodo.5745958))
+
+- Duplicated data were introduced for CCSBT, WCPFC and IATTC, due to an duplicate analysis issue introduced with the previous `time_end` issue.
+
 ## 2025.1.1 (2025-04-30)
 
 - Column `time_end` was fixed for CCSBT, IATTC and WCPFC contributions to the global nominal catches dataset (`global_nominal_catch_firms_level0`). Version `2025.1.1` (_corrigendum_) targets only this dataset and its version `2025.1.0`
