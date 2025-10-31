@@ -19,7 +19,7 @@ function(action, entity, config) {
     
     # check if not all the source_authority columns have the same maximum year of declaration
     if (length(unique(max_years$max_time_start)) > 1) {
-      config$logger.info("Careful, not all the source_authority has the same maximum year of declaration")
+      config$logger$INFO("Careful, not all the source_authority has the same maximum year of declaration")
       
       # get the minimum time_start of all the maximum time_start of each source_authority
       min_time_start <- min(max_years$max_time_start)
@@ -33,13 +33,13 @@ function(action, entity, config) {
   
 	if (!is.null(SBF_data_rfmo_to_keep)){
     
-    config$logger.info(paste0("Keeping only data from ",SBF_data_rfmo_to_keep," for the Southern Bluefin Tuna..."))
+    config$logger$INFO(paste0("Keeping only data from ",SBF_data_rfmo_to_keep," for the Southern Bluefin Tuna..."))
     if (SBF_data_rfmo_to_keep=="CCSBT"){
       nominal_catch <- nominal_catch[ which(!(nominal_catch$species %in% "SBF" & nominal_catch$source_authority %in% c("ICCAT","IOTC","IATTC","WCPFC"))), ]
     } else {
       nominal_catch <- nominal_catch[ which(!(nominal_catch$species %in% "SBF" & nominal_catch$source_authority == "CCSBT")), ]
     }
-    config$logger.info(paste0("Keeping only data from ",SBF_data_rfmo_to_keep," for the Southern Bluefin Tuna OK")) 
+    config$logger$INFO(paste0("Keeping only data from ",SBF_data_rfmo_to_keep," for the Southern Bluefin Tuna OK")) 
     
   }
   
@@ -81,11 +81,11 @@ function(action, entity, config) {
   entity$addResource("public", output_name_dataset_public)
   entity$addResource("geom_table", opts$geom_table)
   #### END
-  config$logger.info(
+  config$logger$INFO(
     "-----------------------------------------------------------------------------------------------------"
   )
-  config$logger.info("End: Your tuna atlas dataset has been created!")
-  config$logger.info(
+  config$logger$INFO("End: Your tuna atlas dataset has been created!")
+  config$logger$INFO(
     "-----------------------------------------------------------------------------------------------------"
   )
   #write to service dbi

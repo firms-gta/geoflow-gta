@@ -21,7 +21,7 @@ function(action, entity, config) {
     
     # check if not all the source_authority columns have the same maximum year of declaration
     if (length(unique(max_years$max_time_start)) > 1) {
-      config$logger.info("Careful, not all the source_authority has the same maximum year of declaration")
+      config$logger$INFO("Careful, not all the source_authority has the same maximum year of declaration")
       
       # get the minimum time_start of all the maximum time_start of each source_authority
       min_time_start <- min(max_years$max_time_start)
@@ -94,7 +94,7 @@ function(action, entity, config) {
       if(rfmo_main[[1]]=="CCSBT"){
         opts[[opts_key]] <- "CCSBT"
       } else {
-        config$logger.info(paste0("Please provide a source authority to keep for overlapping zone ", opts_key))
+        config$logger$INFO(paste0("Please provide a source authority to keep for overlapping zone ", opts_key))
         return()
       }
     }
@@ -129,7 +129,7 @@ function(action, entity, config) {
   
   # Loop over each zone and handle overlap using the defined configuration
   for (zone_key in names(zones_config)) {
-    config$logger.info(paste0("Processing zone: ", zone_key))  # Log before processing
+    config$logger$INFO(paste0("Processing zone: ", zone_key))  # Log before processing
     
     # It's a good practice to use tryCatch to understand if errors in handle_overlap are stopping the loop
     tryCatch({
@@ -138,14 +138,14 @@ function(action, entity, config) {
       message(paste0("Error encountered: ", e))  # Print errors to the console
     })
     
-    config$logger.info(paste0("Finished processing zone: ", zone_key))  # Log after processing
+    config$logger$INFO(paste0("Finished processing zone: ", zone_key))  # Log after processing
   }
   
     #------Spatial aggregation of data------------------------------------------------------------------------------------------------------------------------
   #Spatial Aggregation of data (5deg resolution datasets only: Aggregate data on 5° resolution quadrants)
   #-----------------------------------------------------------------------------------------------------------------------------------------------------------
   if (!is.null(opts$aggregate_on_5deg_data_with_resolution_inferior_to_5deg)) if (opts$aggregate_on_5deg_data_with_resolution_inferior_to_5deg) {
-    config$logger.info("Aggregating data that are defined on quadrants or areas inferior to 5° quadrant resolution to corresponding 5° quadrant...")
+    config$logger$INFO("Aggregating data that are defined on quadrants or areas inferior to 5° quadrant resolution to corresponding 5° quadrant...")
     source("https://raw.githubusercontent.com/firms-gta/geoflow-tunaatlas/master/R/sardara_functions/transform_cwp_code_from_1deg_to_5deg.R")
     
     one_degree <- georef_dataset %>% dplyr::filter(substr(geographic_identifier, 1, 1) == "5")
@@ -156,7 +156,7 @@ function(action, entity, config) {
     # fwrite(df_input_not_aggregated, "data/df_input_not_aggregated.csv")
     georef_dataset <- as.data.frame(rbind(one_degree_aggregated, five_degree))
 
-    config$logger.info("Aggregating data that are defined on quadrants or areas inferior to 5° quadrant resolution to corresponding 5° quadrant OK")
+    config$logger$INFO("Aggregating data that are defined on quadrants or areas inferior to 5° quadrant resolution to corresponding 5° quadrant OK")
  
   }
   
@@ -181,13 +181,13 @@ function(action, entity, config) {
   
   if (!is.null(opts$gear_filter)){
     gear_filter<-unlist(strsplit(opts$gear_filter, split=","))
-    config$logger.info(sprintf("Filtering by gear(s) [%s]", paste(gear_filter, collapse=",")))	
+    config$logger$INFO(sprintf("Filtering by gear(s) [%s]", paste(gear_filter, collapse=",")))	
     georef_dataset<-georef_dataset %>% dplyr::filter(gear_type %in% gear_filter)
-    config$logger.info("Filtering gears OK")
+    config$logger$INFO("Filtering gears OK")
   }
   
   #-----------------------------------------------------------------------------------------------------------------------------------------------------------
-  config$logger.info("Apply filters if filter needed (Filter data by groups of everything) ")
+  config$logger$INFO("Apply filters if filter needed (Filter data by groups of everything) ")
   #-----------------------------------------------------------------------------------------------------------------------------------------------------------
   # Filtering data on multiple dimension if needed for a particular final data
   
@@ -243,11 +243,11 @@ function(action, entity, config) {
   entity$addResource("public", output_name_dataset_public)
   entity$addResource("geom_table", opts$geom_table)
   #### END
-  config$logger.info(
+  config$logger$INFO(
     "-----------------------------------------------------------------------------------------------------"
   )
-  config$logger.info("End: Your tuna atlas dataset has been created!")
-  config$logger.info(
+  config$logger$INFO("End: Your tuna atlas dataset has been created!")
+  config$logger$INFO(
     "-----------------------------------------------------------------------------------------------------"
   )
   #write to service dbi
