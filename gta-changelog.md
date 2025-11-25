@@ -1,5 +1,9 @@
 # FIRMS Global Tuna Atlas - Change log
 
+## 2025.3.0 (2025-11-25)
+
+- Corrigendum from IATTC - Missing Data for purse seines (ISSCFG code 01.1) for 2023
+
 ## 2025.2.0 (2025-10-31)
 
 ### global_nominal_catch_firms_level0 (DOI: [10.5281/zenodo.5745958](https://doi.org/10.5281/zenodo.5745958))
