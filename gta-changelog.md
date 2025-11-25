@@ -1,14 +1,23 @@
 # FIRMS Global Tuna Atlas - Change log
 
-## 2025.3.0 (2025-11-25)
+## 2025.2.0 
+
+### global_nominal_catch_firms_level0 (DOI: [10.5281/zenodo.5745958](https://doi.org/10.5281/zenodo.5745958)) (2025-10-31)
+
+- Duplicated data were introduced for CCSBT, WCPFC and IATTC, due to an duplicate analysis issue introduced with the previous `time_end` issue.
+
+### global_catch_1deg_1m_surface_firms_level0 (DOI: [10.5281/zenodo.5745986](https://doi.org/10.5281/zenodo.5745986)) (2025-11-25)
 
 - Corrigendum from IATTC - Missing Data for purse seines (ISSCFG code 01.1) for 2023
 
-## 2025.2.0 (2025-10-31)
+### global_catch_5deg_1m_firms_level0 (DOI: [10.5281/zenodo.5746041](https://doi.org/10.5281/zenodo.5746041)) (2025-11-25)
 
-### global_nominal_catch_firms_level0 (DOI: [10.5281/zenodo.5745958](https://doi.org/10.5281/zenodo.5745958))
+- Corrigendum from IATTC - Missing Data for purse seines (ISSCFG code 01.1) for 2023
 
-- Duplicated data were introduced for CCSBT, WCPFC and IATTC, due to an duplicate analysis issue introduced with the previous `time_end` issue.
+### global_catch_firms_level0 (DOI: [10.5281/zenodo.5747174](https://doi.org/10.5281/zenodo.5747174)) (2025-11-25)
+
+- Corrigendum from IATTC - Missing Data for purse seines (ISSCFG code 01.1) for 2023
+
 
 ## 2025.1.1 (2025-04-30)
 
