@@ -1,5 +1,23 @@
 # FIRMS Global Tuna Atlas - Change log
 
+## 2026.1.0
+
+### global_nominal_catch_firms_level0 (DOI: [10.5281/zenodo.5745958](https://doi.org/10.5281/zenodo.5745958))
+
+- temporal coverage includes one additional year of data (2024)
+
+### global_catch_1deg_1m_surface_firms_level0 (DOI: [10.5281/zenodo.5745986](https://doi.org/10.5281/zenodo.5745986))
+
+- temporal coverage includes one additional year of data (2024)
+
+### global_catch_5deg_1m_firms_level0 (DOI: [10.5281/zenodo.5746041](https://doi.org/10.5281/zenodo.5746041))
+
+- temporal coverage includes one additional year of data (2024)
+
+### global_catch_firms_level0 (DOI: [10.5281/zenodo.5747174](https://doi.org/10.5281/zenodo.5747174))
+
+- temporal coverage includes one additional year of data (2024)
+
 ## 2025.2.0 
 
 ### global_nominal_catch_firms_level0 (DOI: [10.5281/zenodo.5745958](https://doi.org/10.5281/zenodo.5745958)) (2025-10-31)
