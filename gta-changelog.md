@@ -1,5 +1,23 @@
 # FIRMS Global Tuna Atlas - Change log
 
+## 2026.1.1
+
+### global_nominal_catch_firms_level0 (DOI: [10.5281/zenodo.5745958](https://doi.org/10.5281/zenodo.5745958))
+
+- **Corrigendum** - Remove statistics for SAI  (duplicated and reclassified as SFA)
+
+### global_catch_1deg_1m_surface_firms_level0 (DOI: [10.5281/zenodo.5745986](https://doi.org/10.5281/zenodo.5745986))
+
+- **Corrigendum** - Remove statistics for SAI  (duplicated and reclassified as SFA)
+
+### global_catch_5deg_1m_firms_level0 (DOI: [10.5281/zenodo.5746041](https://doi.org/10.5281/zenodo.5746041))
+
+- **Corrigendum** - Remove statistics for SAI  (duplicated and reclassified as SFA)
+
+### global_catch_firms_level0 (DOI: [10.5281/zenodo.5747174](https://doi.org/10.5281/zenodo.5747174))
+
+- **Corrigendum** - Remove statistics for SAI  (duplicated and reclassified as SFA)
+
 ## 2026.1.0
 
 ### global_nominal_catch_firms_level0 (DOI: [10.5281/zenodo.5745958](https://doi.org/10.5281/zenodo.5745958))
